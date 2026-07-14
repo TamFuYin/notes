@@ -2,7 +2,7 @@ Vieta's Formulas 揭示了多项式方程的根与其系数的关系。
 
 [参考](https://en.wikipedia.org/wiki/Newton%27s_identities)
 
-考虑一个 $n$ 次多项式 $F(z_1,z_2,\dots,z_n)=\sum_{i=0}^na_iz^i$，如果他的根为 $z_1,z_2,\dots,z_n$，则我们有 $a_n\prod_{i=1}^n(z-z_i)=\sum_{i=0}^na_iz^i$。
+考虑一个 $n$ 次多项式 $F(z)=\sum_{i=0}^na_iz^i$，如果他的根为 $z_1,z_2,\dots,z_n$，则我们有 $a_n\prod_{i=1}^n(z-z_i)=\sum_{i=0}^na_iz^i$。
 
 于是我们有 $\forall 1\le k\le n,$
 $$
