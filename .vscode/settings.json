@@ -1,0 +1,5 @@
+{
+    "notebook.globalToolbar": false,
+    "notebook.insertToolbarLocation": "hidden",
+    "zotero-citation-picker.port": "http://127.0.0.1:23119/better-bibtex/cayw?format=eta&template=%7Bcite%7D%60%3C%25%3D%20it.items.map(i%20%3D%3E%20i.citationKey).join('%2C')%20%25%3E%60"
+}

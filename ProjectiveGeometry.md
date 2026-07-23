@@ -32,7 +32,7 @@ OI 退役之后发现完全不会几何，然后就去学了一些<ruby>高级<r
 
 因此，我们可以用直线上的两个点来表示一条直线上的点，也即 $\bm x=u\bm x_1+v\bm x_2$。其实就是这条直线（二维线性子空间）的一组基。
 
-考虑 $\bm x_1,\bm x_2,\bm x_3,\bm x_4$ 是一条直线 $\bm l$ 上的 $4$ 个点，其在某组基 $\mathcal B$ 下的坐标为 $\bm y_i=[\bm x_i]_{\mathcal B}$，则这四个点的交比定义为
+考虑 $\bm x_1,\bm x_2,\bm x_3,\bm x_4$ 是一条直线 $\ bm l$ 上的 $4$ 个点，其在某组基 $\mathcal B$ 下的坐标为 $\bm y_i=[\bm x_i]_{\mathcal B}$，则这四个点的交比定义为
 $$
 (\bm x_1,\bm x_2;\bm x_3,\bm x_4)=\frac{\bm y_1\times \bm y_3}{\bm y_2\times \bm y_3}:\frac{\bm y_1\times \bm y_4}{\bm y_2\times \bm y_4}
 $$
@@ -47,17 +47,48 @@ $$
 
 又名圆锥曲线，一般形式为 $Ax^2+Bxy+Cy^2+Dx+Ey+F=0$。
 
-齐次化后可以写成 $Ax^{2}+Bxy+Cy^{2}+Dxz+Eyz+Fz^{2}=0$。用 [Desmos](https://www.desmos.com/3d) 可以发现一般的二次曲线在齐次空间内形如一个不定倾角、张角的双圆锥（所以应该叫做二次曲面？
+如果没有一次项。我们可以表示为一个二次型方程 $\bm x^TA\bm x=c$，其中 $A$ 是一个 $2\times 2$ 可逆对称矩阵。
+
+「线代」里有一个「主轴定理」，表明一个对称矩阵必然存在一个正交变量代换 $\bm x=P\bm y$ 使二次型 $\bm x^TC\bm x$ 变换为不含交叉乘积项的二次型 $\bm y^T PCP \bm y$。即可对角化。从而转化为课本上的三种（不退化的）二次曲线。
+
+因此将一般的二次曲线变为标准形式即为对角化的过程，但是这跟我们要讲的齐次空间没什么关系。
+
+上面的方程不是齐次的。齐次化后可以写成 $Ax^{2}+Bxy+Cy^{2}+Dxz+Eyz+Fz^{2}=0$。用 [Desmos](https://www.desmos.com/3d) 可以发现一般的二次曲线在齐次空间内形如一个不定倾角、张角的双圆锥（所以应该叫做二次曲面？
 
 二次曲线看似有 $6$ 个参数，实则由于可以同乘一个常数而使曲线不变，所以只有五个自由度。
 
 可以表示为一个对称矩阵 $C=\begin{bmatrix}A& B/2& D/2\\ B/2& C& E/2\\ D/2& E/2& F \end{bmatrix}$ 的二次型 $\{\bm x|\bm x^TC\bm x=0\}$，其中 $\bm x$ 为齐次空间向量。
 
-由于是对称矩阵，所以一定是可对角化的。也就是说可以坐标变换之后化作一般的 $Ax^2+Cy^2+F=0$，变成书本上的三种锥线方程。
-
 上面我们提到 $\bm x$ 在直线 $\bm l$ 上当且仅当 $\bm x^T\bm l=\bm l^T\bm x=0$，对比上面的形式，我们惊人地发现 $\bm x$ 在直线 $C\bm x$ 上。
 
-实际上我们知道对于圆锥曲线上的点 $\bm x$，$C\bm x$ 是过点 $\bm x$ 的 $C$ 的一条切线。证明很简单：假定存在 $\bm y\ne \bm x$（注意我们的实际意思是指 $\bm x$ 与 $\bm y$ 是线性无关的）满足 $\bm y^TC\bm y=0$ 且 $(C\bm x)^{T}\bm y=0$，后者即 $\bm x^TC^T\bm y=0$。由于 $C$ 是对称矩阵，所以又相当于 $\bm x^TC\bm y=0$。
+实际上我们知道对于圆锥曲线上的点 $\bm x$，$C\bm x$ 是过点 $\bm x$ 的 $C$ 的一条切线。证明很简单：假定存在 $\bm y\ne \bm x$（注意我们的实际意思是指 $\bm x$ 与 $\bm y$ 是线性无关的）满足 $\bm y^TC\bm y=0$ 且 $\bm y^TC\bm x=0$。
+
+由于 $\bm x$ 与 $\bm y$ 线性无关，那么必然存在 $\bm z\in \R^3$ 使 $\bm x,\bm y,\bm z$ 张成 $\R^3$。
+
+不妨令
+$$
+P=\begin{bmatrix}\bm x&\bm y&\bm z\end{bmatrix}
+$$
+
+则
+$$
+P^TCP=
+\begin{bmatrix}
+\bm x^TC\bm x&\bm x^TC\bm y&\bm x^TC\bm z\\
+\bm y^TC\bm x&\bm y^TC\bm y&\bm y^TC\bm z\\
+\bm z^TC\bm x&\bm z^TC\bm y&\bm z^TC\bm z
+\end{bmatrix}
+=
+\begin{bmatrix}
+0&0&\bm x^TC\bm z\\
+0&0&\bm y^TC\bm z\\
+\bm z^TC\bm x&\bm z^TC\bm y&\bm z^TC\bm z
+\end{bmatrix}
+$$
+
+注意到前两列是线性相关的，因此 $\det(P^TCP)=0$，但是 $C$ 和 $P$ 都是可逆的，矛盾。证毕。
+
+
 
 ## 圆锥和 Dandelin 球
 
@@ -87,6 +118,8 @@ $$
 **Theorem 1.2.** 给定 $C$，若 $\bm p$ 在 $\bm q$ 的极线上，则 $\bm q$ 在 $\bm p$ 的极线上。
 
 $\bm q^TC\bm p=0\iff \bm p^TC\bm q=0$。此时我们称 $\bm p$ 和 $\bm q$ 共轭。
+
+显然，一个点的所有共轭点组成一条直线（即对应一个点列），这条线就是这个点的极线。
 
 ## 交比
 
